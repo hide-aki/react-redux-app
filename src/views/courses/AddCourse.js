@@ -13,6 +13,7 @@ class Courses extends Component {
 
   handleSubmit = (event) => {
     this.props.createCourse(this.state.course);
+    this.props.history.push('/courses');
   }
 
   onTitleChange = (event) => {

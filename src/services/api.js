@@ -47,7 +47,16 @@ export default class Api{
 
   //PATCH
   static update(endPointName, id, data){
+    let url = API_BASE+endPointName + '/' +id;
 
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "patch",
+        url,
+        data
+      }).then(response => resolve(response))
+        .catch(error => reject(error));
+    });
   }
 
   static updateRelated(parentName, parentId, childName, childId, data) {

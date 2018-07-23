@@ -2,7 +2,11 @@ import * as ActionTypes from '../constants/actionTypes';
 import Api from '../services/api';
 
 export function createCourseSuccess(course) {
-    return { type: ActionTypes.CREATE_COURSE, course};
+    return { type: ActionTypes.CREATE_COURSE_SUCCESS, course};
+}
+
+export function updateCourseSuccess(course) {
+    return { type: ActionTypes.UPDATE_COURSE_SUCCESS, course};
 }
 
 export function loadCoursesSuccess(courses) {
@@ -17,6 +21,16 @@ export function createCourse(course) {
                 }).catch(error => console.log(error));
     }
 }
+
+export function updateCourse(course) {
+    return function(dispatch) {
+        return Api.update('Courses', course.id, course)
+                .then(response => {
+                    dispatch(updateCourseSuccess(response.data));
+                }).catch(error => console.log(error));
+    }
+}
+
 
 export function loadCourses() {
     return function(dispatch) {
