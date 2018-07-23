@@ -14,6 +14,11 @@ const SampleSideNav = {
       name : "Courses",
       icon : 'icon-note',
       url : '/courses',
+    },
+    {
+      name : "Add Course",
+      icon : 'icon-plus',
+      url : '/courses/add',
     }
   ]
 }

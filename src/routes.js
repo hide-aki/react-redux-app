@@ -20,11 +20,17 @@ const Courses = Loadable({
   loading: Loading,
 });
 
+const AddCourse = Loadable({
+  loader: () => import('./views/courses/AddCourse'),
+  loading: Loading,
+});
+
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
   { path: '/about', exact: true, name: 'About', component: About},
   { path: '/courses', exact: true, name: 'Courses', component: Courses},
+  { path: '/courses/add', exact: true, name: 'Courses', component: AddCourse},
 ]
 export default routes;
