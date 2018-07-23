@@ -8,9 +8,7 @@ class Courses extends Component {
   render(){
 
     return (
-      <div className="container-fluid card">
        <CourseList courses={this.props.courses} />
-      </div>
     );
   }
 }
