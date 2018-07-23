@@ -29,6 +29,7 @@ export default class Api{
   //GET
   static find(endPointName, id, filter){
     let url = API_BASE+endPointName;
+    if(id) url = url + '/' + id;
     if(filter) {
       url = url+'?'+filter;
     }
@@ -55,7 +56,15 @@ export default class Api{
 
   //DELETE
   static destroy(endPointName, id){
+    let url = API_BASE+endPointName + '/' +id;
 
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "delete",
+        url
+      }).then(response => resolve(response))
+        .catch(error => reject(error));
+    });
   }
 
   static destroyAll(endPointName, filter){
