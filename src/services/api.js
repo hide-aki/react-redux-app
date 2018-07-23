@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ClientSession from './client-session.js';
 
-let API_BASE = 'http://localhost:8989/api/';
+let API_BASE = 'http://localhost:9000/api/';
 
 export default class Api{
 
@@ -9,6 +9,16 @@ export default class Api{
 
   //POST
   static create(endPointName, data, filter){
+    let url = API_BASE+endPointName;
+    if(filter) {
+      url = url+'?'+filter;
+    }
+
+    return new Promise((resolve, reject) => {
+      axios.post(url, data)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    });
 
   }
 
@@ -18,7 +28,16 @@ export default class Api{
 
   //GET
   static find(endPointName, id, filter){
+    let url = API_BASE+endPointName;
+    if(filter) {
+      url = url+'?'+filter;
+    }
 
+    return new Promise((resolve, reject) => {
+      axios.get(url)
+        .then(response => resolve(response))
+        .catch(error => reject(error));
+    });
   }
 
   static findRelated(parentName, parentId, childName, filter){
