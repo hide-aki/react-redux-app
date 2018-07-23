@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as courseActions from "../../actions/courseActions";
-import { FormGroup, Button, Input, Row, Col } from 'reactstrap';
+import CourseForm from './CourseForm';
 
 class Courses extends Component {
   constructor(props){
@@ -24,22 +24,7 @@ class Courses extends Component {
   render(){
 
     return (
-      <div className="container-fluid card pt-4">
-       <Row>
-          <Col xs="12" sm="6" md="4">
-            <FormGroup>
-              <Input name="title" type="text" placeholder="Title" value={this.state.title} required onChange={this.onTitleChange}/>
-            </FormGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <FormGroup>
-              <Button onClick={this.handleSubmit} className="btn btn-success btn-md">Submit </Button>
-            </FormGroup>
-          </Col>
-        </Row>
-      </div>
+        <CourseForm course={{}} onChange={this.onTitleChange} onClick={this.handleSubmit} />
     );
   }
 }
