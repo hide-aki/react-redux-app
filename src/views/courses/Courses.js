@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as courseActions from "../../actions/courseActions";
 import { FormGroup, Button, Input, Row, Col } from 'reactstrap';
+import CourseList from './CourseList';
 
 class Courses extends Component {
   constructor(props){
@@ -21,20 +22,11 @@ class Courses extends Component {
     this.setState({ course });
   }
   
-  courseRow = (course, index) => {
-    return <div className="row card-header" key={index}> {course.title} </div>
-  }
-
   render(){
 
     return (
       <div className="container-fluid card">
-        <Row>
-          <h1>Courses</h1>
-        </Row>
-        <div>
-          { this.props.courses.map(this.courseRow) }
-        </div>
+       <CourseList courses={this.props.courses} />
         <Row>
           <Col xs="12" sm="6" md="4">
             <FormGroup>
