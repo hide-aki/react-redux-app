@@ -9,6 +9,10 @@ export function updateCourseSuccess(course) {
     return { type: ActionTypes.UPDATE_COURSE_SUCCESS, course};
 }
 
+export function deleteCourseSuccess(courseId) {
+    return { type: ActionTypes.DELETE_COURSE_SUCCESS, courseId};
+}
+
 export function loadCoursesSuccess(courses) {
     return { type: ActionTypes.LOAD_COURSES_SUCCESS, courses};
 }
@@ -37,6 +41,15 @@ export function loadCourses() {
         return Api.find('Courses')
                 .then(response => {
                     dispatch(loadCoursesSuccess(response.data));
+                }).catch(error => console.log(error));
+    }
+}
+
+export function deleteCourse(courseId) {
+    return function(dispatch) {
+        return Api.destroy('Courses', courseId)
+                .then(response => {
+                    dispatch(deleteCourseSuccess(courseId));
                 }).catch(error => console.log(error));
     }
 }
