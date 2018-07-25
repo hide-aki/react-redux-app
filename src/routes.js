@@ -1,8 +1,9 @@
 import React from 'react';
 import Loadable from 'react-loadable';
+import LoadingDots from './components/LoadingDots';
 
 function Loading() {
-    return <div>Loading...</div>;
+    return <LoadingDots interval={300} dots={3} style={{fontSize:48}}/>;
 }
 
 const Home = Loadable({
